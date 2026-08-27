@@ -1,7 +1,7 @@
 
 // stdafx.cpp : source file that includes just the standard includes
 //	Strategy4Yellow.pch will be the pre-compiled header
-//	stdafx.obj will contain the pre-compiled type information    jjijimlmkmjknjcsdcsdcsa
+//	stdafx.obj will contain the pre-compiled type information    jjijimlmkmjknjcsdcsdcsacdszvcdszcdzscx
 
 #include "stdafx.h"
 
