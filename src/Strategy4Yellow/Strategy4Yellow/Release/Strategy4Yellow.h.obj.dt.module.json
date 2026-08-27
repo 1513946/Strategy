@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Strategy4Yellow\\Release\\Strategy4Yellow.obj",
+            "outputs": [
+                "Strategy4Yellow\\Release\\Strategy4Yellow.h.obj.dt.module.json",
+                "Strategy4Yellow\\Release\\Strategy4Yellow.h.obj.dt.d.json",
+                "Strategy4Yellow\\Release\\Strategy4Yellow.pch"
+            ],
+            "requires": []
+        }
+    ]
+}

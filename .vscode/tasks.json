@@ -1,0 +1,103 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Blue Strategy (Release x86)",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/build-strategy.ps1",
+        "-Team",
+        "Blue"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Build Yellow Strategy (Release x86)",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/build-strategy.ps1",
+        "-Team",
+        "Yellow"
+      ],
+      "group": "build",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Build Both Strategies",
+      "dependsOn": [
+        "Build Blue Strategy (Release x86)",
+        "Build Yellow Strategy (Release x86)"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "Deploy Blue DLL",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/deploy-strategy.ps1",
+        "-Team",
+        "Blue"
+      ],
+      "dependsOn": "Build Blue Strategy (Release x86)",
+      "problemMatcher": []
+    },
+    {
+      "label": "Deploy Yellow DLL",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/deploy-strategy.ps1",
+        "-Team",
+        "Yellow"
+      ],
+      "dependsOn": "Build Yellow Strategy (Release x86)",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build & Deploy Both",
+      "dependsOn": [
+        "Deploy Blue DLL",
+        "Deploy Yellow DLL"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start SimuroSot5",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Start-Process -FilePath '${workspaceFolder}\\StartSimuroSot5Large.cmd' -WorkingDirectory '${workspaceFolder}'"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
